@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PersonnelManagement.Mvc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PersonnelManagement.Mvc.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            background-color: #000000;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #559cca;
+        }
+
+        .main-content {
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <div style="display: flex; gap: 10px; width:100%; margin:5px; margin-left:30px">
+            <li>
+                <a asp-area="" asp-controller="Profile" asp-action="Profile">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Admin" asp-action="User">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="User" asp-action="Logout">
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                </a>
+            </li>
+            </div>
+            <hr style="color: white" />
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Department" asp-action="Index">Departments</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Position" asp-action="Index">Positions</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Schedule" asp-action="Index">Schedule</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            
+        </header>
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable({
+                columnDefs: [
+                    {
+                        targets: -1,
+                        data: null,
+                        defaultContent: '<button>Save</button> | <button>Delete</button>',
+                    },
+                ],
+            });
+        });
+    </script>
+</body>
+</html>
